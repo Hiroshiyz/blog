@@ -22,7 +22,6 @@ router.post("/register", async (req, res) => {
   if (emailExist) {
     return res.status(403).send("此信箱已被註冊過");
   }
-  //註冊
   let { name, email, password } = req.body;
   try {
     let newUser = new User({
