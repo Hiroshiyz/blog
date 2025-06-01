@@ -13,7 +13,12 @@ router.get("/testAPI", (req, res) => {
 //全部貼文
 router.get("/", async (req, res) => {
   try {
-    let allPosts = await Post.find({}).exec();
+    let allPosts = await Post.find({})
+      .populate({
+        path: "author",
+        select: "name",
+      })
+      .exec();
     return res.send(allPosts);
   } catch (e) {
     return res.status(500).send(e);
@@ -22,17 +27,24 @@ router.get("/", async (req, res) => {
 //根據id搜尋貼文
 router.get("/:_id", async (req, res) => {
   let { _id } = req.params;
-  let foundPost = await Post.findOne({ _id })
-    .populate({
-      path: "author",
-      select: "name email",
-    })
-    .exec();
+  try {
+    let foundPost = await Post.findOne({ _id })
+      .populate({
+        path: "author",
+        select: "name email",
+      })
+      .exec();
+    if (!foundPost) {
+      return res.send("找不到此課程");
+    }
 
-  return res.send({
-    message: "找到特定課程",
-    foundPost,
-  });
+    return res.send({
+      message: "找到特定課程",
+      foundPost,
+    });
+  } catch (e) {
+    return res.status(500).send(e);
+  }
 });
 //新增貼文
 router.post("/", async (req, res) => {

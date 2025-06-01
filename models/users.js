@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const { user } = require(".");
 //setting User Database
 const userSchema = new Schema({
   name: {
