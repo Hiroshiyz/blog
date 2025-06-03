@@ -75,13 +75,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                     </Link>
                   </li>
                 )}
-                {currentUser && (
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/editPost">
-                      編輯貼文
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
           </div>

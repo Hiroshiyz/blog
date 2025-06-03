@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/authService";
+import PostService from "../services/PostService";
+
 const ProfileComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
+  const [postData, setPostData] = useState([]);
+  const handleEdit = (postId) => {
+    navigate(`/editPost/${postId}`);
+  };
   //點選個人檔案渲染1次
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -19,6 +25,16 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
       } else {
         navigate("/login");
       }
+    }
+    if (currentUser) {
+      PostService.get(currentUser.user._id)
+        .then((res) => {
+          console.log(res.data);
+          setPostData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   }, [setCurrentUser, navigate]);
   return (
@@ -47,6 +63,38 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
               </tr>
             </tbody>
           </table>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {postData.map((post) => {
+              return (
+                <div
+                  className="card"
+                  style={{ width: "18rem", margin: "1rem" }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {" "}
+                      <strong>{post.title}</strong>
+                    </h5>
+
+                    <p style={{ margin: "0.5rem" }} className="card-text">
+                      <strong>內容: </strong>
+                      <br /> {post.description}
+                    </p>
+                    <p className="card-text" style={{ margin: "0.5rem" }}>
+                      <strong>作者: </strong> {post.author.name}
+                    </p>
+
+                    <button
+                      className="btn btn-primary btn-block"
+                      onClick={() => handleEdit(post._id)}
+                    >
+                      編輯貼文
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

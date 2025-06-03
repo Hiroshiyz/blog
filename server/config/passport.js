@@ -28,13 +28,11 @@ module.exports = (passport) => {
         callbackURL: "http://localhost:8080/api/auth/google/redirect",
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log("進入google strategy");
-
         try {
           let foundUser = await User.findOne({ googleID: profile.id }).exec();
           if (foundUser) {
             console.log("已經註冊過無須存入");
-            console.log(foundUser);
+
             done(null, foundUser);
           } else {
             console.log("新用戶儲存資料");
@@ -44,7 +42,7 @@ module.exports = (passport) => {
               email: profile.emails[0].value,
             });
             let saveUser = await newUser.save();
-            console.log(saveUser);
+
             done(null, saveUser);
           }
         } catch (e) {
@@ -53,6 +51,4 @@ module.exports = (passport) => {
       }
     )
   );
-  //local
-  // passport.use()
 };

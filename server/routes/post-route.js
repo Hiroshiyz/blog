@@ -24,15 +24,24 @@ router.get("/", async (req, res) => {
     return res.status(500).send(e);
   }
 });
-//根據id搜尋貼文
+//根據作者id顯示貼文
+router.get("/author/:author_id", async (req, res) => {
+  let { author_id } = req.params;
+  try {
+    let foundPost = await Post.find({ author: author_id }).populate("author", [
+      "name",
+    ]);
+    return res.send(foundPost);
+  } catch (error) {
+    return res.status(500).send(e);
+  }
+});
+//根據貼文id搜尋貼文
 router.get("/:_id", async (req, res) => {
   let { _id } = req.params;
   try {
     let foundPost = await Post.findOne({ _id })
-      .populate({
-        path: "author",
-        select: "name email",
-      })
+      .populate("author", ["name, email"])
       .exec();
     if (!foundPost) {
       return res.send("找不到此課程");
@@ -91,7 +100,7 @@ router.patch("/:_id", async (req, res) => {
       return res.status(403).send("你不是該作者");
     }
   } catch (e) {
-    return res.status(403).send("你不是該作者");
+    return res.status(500).send(e);
   }
 });
 //刪除貼文

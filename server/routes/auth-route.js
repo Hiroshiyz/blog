@@ -81,8 +81,9 @@ router.get(
   "/google/redirect",
   passport.authenticate("google", { session: false }),
   (req, res) => {
+    
     //登入成功給前端token
-    if (!req.user) return res.status.send("unauthorized");
+    if (!req.user) return res.status(400).send("unauthorized");
     const tokenObj = {
       _id: req.user._id,
       email: req.user.email,
