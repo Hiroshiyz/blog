@@ -47,7 +47,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   let { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  //確認信箱是否被註冊過?
+
   const foundUser = await User.findOne({ email: req.body.email }).exec();
   if (!foundUser) {
     return res.status(403).send("使用者不存在請重新輸入");
@@ -81,7 +81,6 @@ router.get(
   "/google/redirect",
   passport.authenticate("google", { session: false }),
   (req, res) => {
-    
     //登入成功給前端token
     if (!req.user) return res.status(400).send("unauthorized");
     const tokenObj = {
@@ -95,15 +94,15 @@ router.get(
     return res.redirect(`http://localhost:3000/profile?token=${token}`);
   }
 );
-//logout
-router.post("/logout", (req, res) => {
-  req.logOut((err) => {
-    if (err) {
-      return res.send(err);
-    }
-    return res.send("成功登出");
-  });
-});
+//logout session
+// router.post("/logout", (req, res) => {
+//   req.logOut((err) => {
+//     if (err) {
+//       return res.send(err);
+//     }
+//     return res.send("成功登出");
+//   });
+// });
 //forget
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;

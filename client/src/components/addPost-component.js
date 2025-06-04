@@ -21,7 +21,7 @@ const AddPostComponent = (props) => {
   const addPosts = () => {
     PostService.add(title, description)
       .then(() => {
-        window.alert("新課程已創建成功");
+        window.alert("新貼文已創建");
         navigate("/profile");
       })
       .catch((error) => {
