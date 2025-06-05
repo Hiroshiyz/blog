@@ -26,6 +26,7 @@ class AuthService {
   setUser(token) {
     try {
       const user = jwtDecode(token);
+      console.log(user);
       localStorage.setItem("user", JSON.stringify({ user, token }));
     } catch (err) {
       console.error("Invalid token:", err);

@@ -10,10 +10,12 @@ const LoginComponent = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const token = params.get("token");
+    console.log("token from url:", token);
     if (token) {
-      AuthService.handleGoogleLogin(token);
+      AuthService.setUser(token);
       setCurrentUser(AuthService.getCurrentUser());
       // 清除 URL 的 token 參數，導向 profile 頁面
+
       navigate("/profile", { replace: true });
     }
   }, [location, navigate, setCurrentUser]);

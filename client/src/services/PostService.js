@@ -14,7 +14,7 @@ class PostService {
       { title, description },
       {
         headers: {
-          Authorization: token, //JWT
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -30,7 +30,7 @@ class PostService {
     }
     return axios.get(API_URL + "/author/" + _id, {
       headers: {
-        Authorization: token, //JWT
+        Authorization: `Bearer ${token}`,
       },
     });
   }
@@ -47,7 +47,7 @@ class PostService {
       { title, description },
       {
         headers: {
-          Authorization: token, //JWT
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -62,7 +62,7 @@ class PostService {
     }
     return axios.get(API_URL, {
       headers: {
-        Authorization: token, //JWT
+        Authorization: `Bearer ${token}`,
       },
     });
   }

@@ -13,7 +13,7 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
-
+    console.log("token from url:", token);
     if (token) {
       AuthService.setUser(token);
       setCurrentUser(AuthService.getCurrentUser());
