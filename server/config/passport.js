@@ -4,7 +4,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 module.exports = (passport) => {
   //jwt 驗證
   const opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = process.env.PASSPORT_SECRET;
   passport.use(
     //playload (message)

@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
       }); //base64
       return res.send({
         message: "成功登入",
-        token: "JWT " + token,
+        token: token,
         user: foundUser,
       });
     } else {
