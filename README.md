@@ -27,6 +27,15 @@
 - 後端會驗證 Token 是否有效，才允許存取
 
 ## 畫面
+![image](https://github.com/user-attachments/assets/6f45e51a-3654-4f9b-862a-687ebdff7d33)
+![image](https://github.com/user-attachments/assets/cf4b3088-a00e-48e1-84a6-cfa2349983da)
+![image](https://github.com/user-attachments/assets/ce2965c8-5707-48a2-98e0-5573e8dab3fc)
+
+![image](https://github.com/user-attachments/assets/041e47c6-dba8-451a-8df1-2fa413568c3c)
+![image](https://github.com/user-attachments/assets/bc038090-1274-43af-9bd5-6902109c069e)
+![image](https://github.com/user-attachments/assets/d3f7f903-8a83-4165-a181-d314d9776f17)
 
 
-##以下是安裝指令
+
+
+## 以下是安裝指令
