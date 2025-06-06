@@ -39,3 +39,24 @@
 
 
 ## 以下是安裝指令
+ 安裝步驟
+
+Clone 專案
+
+```bash
+git clone https://github.com/your-username/blog-system.git
+cd blog-system
+```
+
+安裝下載套件
+```bash
+
+npm install
+```
+建立環境變數
+```bash
+請在根目錄下建立 .env 檔案，並加入以下內容（根據你的實際設定調整）：
+PASSPORT_SECRET = 
+GOOGLE_CLIENT_ID =
+GOOGLE_CLIENT_SECRET = 
+```
