@@ -2,20 +2,20 @@
 
 這是一個具備會員系統與文章管理功能的全端部落格平台，支援JWT 驗證機制與 OAuth 登入，採用 RESTful 架構設計，前後端分離開發。適合展示我在 API 設計、身分驗證、資料關聯設計與全端整合方面的實作經驗。
 
-🔗 GitHub Repo: https://github.com/Hiroshiyz/blog
 
-✅ 專案功能簡介
-✏️ 使用者可進行新增、編輯、刪除、瀏覽文章
 
-🔐 支援註冊、登入、登出與第三方登入（OAuth）
+## 專案功能簡介
+ 使用者可進行新增、編輯、刪除、瀏覽文章
 
-🔄 採用 JWT 實作 API 驗證機制（Token 儲存在 localStorage）
+ 支援註冊、登入、登出與第三方登入（OAuth）
 
-👥 使用者與文章資料具備關聯性（Join 關聯查詢）
+ 採用 JWT 實作 API 驗證機制（Token 儲存在 localStorage）
 
-📡 後端提供RESTful API，前端以 React 串接資料
+ 使用者與文章資料具備關聯性（Join 關聯查詢）
 
-⚙️ 技術架構與工具使用
+ 後端提供RESTful API，前端以 React 串接資料
+
+## 技術架構與工具使用
 前端技術（Client）
 React.js：前端框架，負責 UI 邏輯與頁面切換（React Router）
 
